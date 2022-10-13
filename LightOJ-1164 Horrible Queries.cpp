@@ -47,9 +47,6 @@ private:
     ll query(int node, int l, int r, int le, int ri, vector < nodeData >& treeData){
         if ( le > ri )return 0;
         if ( le == l && ri == r ){
-            int mid = (l+r)>>1;
-            pushLazy(node, mid-l+1, r-mid, treeData);
-            combine(node,treeData);
             return treeData [ node ].sum;
         }
         int mid = (l+r)>>1;

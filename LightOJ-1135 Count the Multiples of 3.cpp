@@ -42,12 +42,12 @@ private:
         int two = treeData [ node ].two;
         int zero = treeData [ node ].zero;
         if ( val % 3 == 1 ){
-            treeData [ node ].zero = one; 
+            treeData [ node ].zero = one;
             treeData [ node ].one  = two;
             treeData [ node ].two  = zero;
         }
         else if ( val % 3 == 2 ){
-            treeData [ node ].zero = two; 
+            treeData [ node ].zero = two;
             treeData [ node ].one  = zero;
             treeData [ node ].two  = one;
         }
@@ -60,7 +60,6 @@ private:
     int query(int node, int l, int r, int le, int ri, vector < nodeData >& treeData){
         if ( le > ri )return 0;
         if ( le == l && ri == r ){
-            push(node,treeData);
             return treeData [ node ].zero;
         }
         int mid = (l+r)>>1;
@@ -72,7 +71,6 @@ private:
     void update(int node, int l, int r, int le, int ri, vector < nodeData >& treeData){
         if ( le > ri )return;
         if ( le == l && ri == r ){
-            push(node, treeData);
             treeData [ node ].lazy++;
             updateNode(node, 1, treeData);
             return;
@@ -93,13 +91,9 @@ public:
         while( q-- ){
             int type, le, ri;
             cin>>type>>le>>ri;
-            if ( !type ) update(1,0,n-1, le,ri, treeData);
+            if ( !type )update(1,0,n-1, le,ri, treeData);
             else cout<<query(1,0,n-1, le,ri,treeData)<<"\n";
         }
-    }
-    
-    void clearPreviousData(){
-        
     }
 };
 
@@ -110,7 +104,6 @@ int main(){
     //t = 1;
     while( t-- )
     {
-        solve.clearPreviousData();
         solve.brainfuck();
     }
     return 0;
